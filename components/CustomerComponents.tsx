@@ -58,31 +58,31 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-sm transition-opacity animate-in fade-in" onClick={onClose} />
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity animate-in fade-in" onClick={onClose} />
         <div className="bg-jungle-950 w-full max-w-lg rounded-[2rem] shadow-2xl relative z-10 overflow-hidden animate-in zoom-in-95 duration-300 border border-white/10 flex flex-col max-h-[90vh]">
-            <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full backdrop-blur-md transition-colors">
+            <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full backdrop-blur-md transition-colors">
                 <X size={20} />
             </button>
             <div className="h-64 sm:h-80 w-full relative shrink-0">
                 <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-jungle-950 via-transparent to-transparent opacity-90"></div>
                 {product.isPopular && (
-                    <div className="absolute top-4 left-4 bg-jungle-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider flex items-center gap-1 backdrop-blur-sm border border-white/10">
+                    <div className="absolute top-4 left-4 bg-jungle-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider flex items-center gap-1 backdrop-blur-sm border border-white/10">
                         <Leaf size={12} fill="currentColor" /> Popular
                     </div>
                 )}
             </div>
             <div className="p-6 -mt-12 relative z-10 flex flex-col flex-1 overflow-y-auto">
-                <h2 className="font-display font-bold text-2xl md:text-3xl text-white mb-2 leading-tight">{product.name}</h2>
+                <h2 className="font-display font-bold text-2xl md:text-3xl text-stone-100 mb-2 leading-tight">{product.name}</h2>
                 <div className="flex items-baseline gap-3 mb-6">
-                    <span className="text-2xl font-bold text-gold-400">R$ {product.price.toFixed(2).replace('.', ',')}</span>
+                    <span className="text-2xl font-bold text-jungle-400">R$ {product.price.toFixed(2).replace('.', ',')}</span>
                     {product.originalPrice && (
-                        <span className="text-sm text-stone-500 line-through">R$ {product.originalPrice.toFixed(2).replace('.', ',')}</span>
+                        <span className="text-sm text-stone-400 line-through">R$ {product.originalPrice.toFixed(2).replace('.', ',')}</span>
                     )}
                 </div>
                 <p className="text-stone-300 leading-relaxed font-light text-base mb-8">{product.description}</p>
                 <div className="mt-auto pt-4">
-                    <button onClick={handleIfoodClick} className="w-full bg-[#EA1D2C] hover:bg-red-700 text-white py-4 rounded-xl font-bold shadow-xl shadow-red-900/30 transition-all active:scale-98 flex items-center justify-center gap-2 text-lg">
+                    <button onClick={handleIfoodClick} className="w-full bg-[#EA1D2C] hover:bg-red-700 text-white py-4 rounded-xl font-bold shadow-xl shadow-red-900/20 transition-all active:scale-98 flex items-center justify-center gap-2 text-lg">
                         <span>Pedir no iFood</span>
                         <ExternalLink size={20} />
                     </button>
@@ -140,9 +140,9 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
   };
 
   return (
-    <div className="bg-jungle-1000 min-h-screen pb-0 font-sans selection:bg-gold-500 selection:text-white flex flex-col relative overflow-hidden">
+    <div className="bg-jungle-1000 min-h-screen pb-0 font-sans selection:bg-jungle-400 selection:text-white flex flex-col relative overflow-hidden transition-colors duration-500">
       
-      {/* Decorative Background Pattern - Frog Texture (Subtle) */}
+      {/* Decorative Background Pattern - Subtle Noise/Texture */}
       <div 
         className="fixed inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay z-0" 
         style={{ 
@@ -157,7 +157,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
       {!selectedProduct && !showHoursModal && (
          <button 
             onClick={handleIfoodClick}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 z-50 bg-[#EA1D2C] text-white px-6 py-3.5 rounded-full shadow-2xl shadow-red-900/50 hover:scale-105 transition-all flex items-center gap-2 font-bold animate-pulse text-sm border border-white/10 w-[90%] md:w-auto justify-center"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6 z-50 bg-[#EA1D2C] text-white px-6 py-3.5 rounded-full shadow-xl shadow-red-900/30 hover:scale-105 transition-all flex items-center gap-2 font-bold animate-pulse text-sm border border-white/10 w-[90%] md:w-auto justify-center backdrop-blur-sm"
          >
             <span className="font-extrabold tracking-wide uppercase">Pedir no iFood</span>
             <ExternalLink size={16} />
@@ -165,11 +165,11 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
       )}
 
       {/* Hero Banner / Header */}
-      <div className="relative z-10 pb-0 rounded-b-[2rem] overflow-hidden bg-jungle-950 border-b border-white/5 shadow-2xl">
+      <div className="relative z-10 pb-0 rounded-b-[2rem] overflow-hidden bg-jungle-950/50 backdrop-blur-md border-b border-white/5 shadow-2xl">
           
           {/* Hero Image - Facade */}
           <div className="h-[200px] md:h-[320px] w-full bg-cover bg-[center_top] relative group" style={{ backgroundImage: 'url("https://static.wixstatic.com/media/1f17f3_25277367fb2d4ee8a9d91ab6b2532581~mv2.webp")' }}>
-            <div className="absolute inset-0 bg-gradient-to-t from-jungle-1000/90 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-jungle-1000 via-jungle-1000/30 to-transparent"></div>
           </div>
           
           {/* Header Content Container - Overlapping Image */}
@@ -177,36 +177,36 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
               <div className="flex flex-col md:flex-row items-center md:items-end gap-6 text-center md:text-left">
                    
                    {/* Logo - Profile Picture Style */}
-                   <div className="w-28 h-28 md:w-48 md:h-48 bg-jungle-1000 rounded-full flex items-center justify-center shrink-0 border-[4px] border-jungle-500 shadow-2xl overflow-hidden relative z-20">
+                   <div className="w-28 h-28 md:w-48 md:h-48 bg-jungle-1000 rounded-full flex items-center justify-center shrink-0 border-[4px] border-jungle-950 shadow-2xl overflow-hidden relative z-20">
                         <img src="https://static.wixstatic.com/media/1f17f3_3930e4dea898411e95810ab096731d82~mv2.png" className="w-full h-full object-contain p-2" alt="Selva Logo" />
                    </div>
 
                    {/* Title and Info */}
                    <div className="flex-1 pb-4 md:pb-6 pt-2 md:pt-0 flex flex-col items-center md:items-start">
                          <h1 className="flex flex-col md:flex-row items-center md:items-baseline gap-2 md:gap-4 mb-4 leading-none">
-                            <span className="font-display font-black text-5xl md:text-7xl text-white tracking-tighter uppercase drop-shadow-lg">
+                            <span className="font-display font-black text-5xl md:text-7xl text-stone-100 tracking-tighter uppercase drop-shadow-lg">
                                 SELVA
                             </span>
-                            <span className="font-display font-bold text-jungle-500 text-2xl md:text-5xl tracking-tight uppercase drop-shadow-md">
+                            <span className="font-display font-bold text-jungle-400 text-2xl md:text-5xl tracking-tight uppercase drop-shadow-md">
                                 Pizza e Cozinha
                             </span>
                          </h1>
                          
                          {/* Info Row: Rating, Hours, Socials */}
-                         <div className="flex flex-wrap justify-center md:justify-start items-center gap-3 text-xs md:text-sm font-medium text-stone-300">
+                         <div className="flex flex-wrap justify-center md:justify-start items-center gap-3 text-xs md:text-sm font-medium text-stone-400">
                              {/* Rating */}
-                             <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+                             <div className="flex items-center gap-1.5 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
                                 <span className="text-gold-400 flex items-center gap-1 font-bold">
                                     <Star size={12} fill="currentColor" /> 4.8
                                 </span>
                                 <span className="w-px h-3 bg-white/10 mx-1"></span>
-                                <span className="text-white uppercase text-[10px] font-bold tracking-widest">PREMIUM</span>
+                                <span className="text-stone-300 uppercase text-[10px] font-bold tracking-widest">PREMIUM</span>
                              </div>
                              
                              {/* Hours Button */}
                              <button 
                                 onClick={() => setShowHoursModal(true)}
-                                className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-all cursor-pointer border border-white/10 active:scale-95 group text-stone-300 hover:text-white"
+                                className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-all cursor-pointer border border-white/10 active:scale-95 group text-stone-300 hover:text-stone-100 backdrop-blur-sm"
                              >
                                 <Clock size={13} className="text-jungle-400 group-hover:text-jungle-300 transition-colors"/> 
                                 <span>Ver Horários</span>
@@ -217,10 +217,10 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
 
                              {/* Socials - Now Inline & Unified Style */}
                              <div className="flex items-center gap-2">
-                                <a href="https://www.instagram.com/selvapizzaria/" target="_blank" className="bg-white/5 hover:bg-white/10 p-1.5 rounded-full transition-all border border-white/10 text-white group flex items-center justify-center w-8 h-8" aria-label="Instagram">
+                                <a href="https://www.instagram.com/selvapizzaria/" target="_blank" className="bg-white/5 hover:bg-white/10 p-1.5 rounded-full transition-all border border-white/10 text-stone-300 hover:text-white group flex items-center justify-center w-8 h-8" aria-label="Instagram">
                                     <Instagram size={16} />
                                 </a>
-                                <a href="https://wa.me/5527988286687" target="_blank" className="bg-white/5 hover:bg-white/10 p-1.5 rounded-full transition-all border border-white/10 text-white group flex items-center justify-center w-8 h-8" aria-label="WhatsApp">
+                                <a href="https://wa.me/5527988286687" target="_blank" className="bg-white/5 hover:bg-white/10 p-1.5 rounded-full transition-all border border-white/10 text-stone-300 hover:text-white group flex items-center justify-center w-8 h-8" aria-label="WhatsApp">
                                     <WhatsAppIcon size={16} />
                                 </a>
                              </div>
@@ -236,10 +236,10 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                     {/* Active Status Indicator */}
                     <div className={`flex items-center gap-2 text-[10px] md:text-xs font-bold px-4 py-2 rounded-full border border-opacity-30 backdrop-blur-md transition-all ${
                         isOpen 
-                        ? 'text-jungle-400 bg-jungle-900/40 border-jungle-500' 
-                        : 'text-red-400 bg-red-900/40 border-red-500'
+                        ? 'text-jungle-300 bg-jungle-900/40 border-jungle-500' 
+                        : 'text-red-300 bg-red-900/40 border-red-500'
                     }`}>
-                        <div className={`w-1.5 h-1.5 rounded-full ${isOpen ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse' : 'bg-red-500'}`}></div>
+                        <div className={`w-1.5 h-1.5 rounded-full ${isOpen ? 'bg-jungle-400 shadow-[0_0_8px_rgba(74,222,128,0.5)] animate-pulse' : 'bg-red-500'}`}></div>
                         {isOpen ? 'Aberto agora' : 'Fechado agora'}
                     </div>
                 </div>
@@ -248,7 +248,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
       </div>
 
       {/* Search & Categories (Sticky) */}
-      <div className="sticky top-0 bg-jungle-1000/90 backdrop-blur-xl z-30 shadow-2xl border-b border-white/5 transition-all duration-300">
+      <div className="sticky top-0 bg-jungle-1000/80 backdrop-blur-xl z-30 shadow-lg border-b border-white/5 transition-all duration-300">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-3 px-4 md:px-8 py-3">
             {/* Search */}
             <div className="relative group w-full md:w-72 shrink-0">
@@ -258,7 +258,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                     placeholder="O que você quer comer?" 
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full bg-white/5 pl-10 pr-4 py-2.5 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-jungle-500/50 focus:bg-white/10 transition-all placeholder:text-stone-600 text-stone-200 border border-white/5 font-light"
+                    className="w-full bg-jungle-950/60 pl-10 pr-4 py-2.5 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-jungle-400/30 focus:bg-jungle-950/80 transition-all placeholder:text-stone-500 text-stone-200 border border-white/5 font-light"
                 />
             </div>
             
@@ -270,10 +270,10 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                     onClick={() => scrollToCategory(cat.id)}
                     className={`whitespace-nowrap text-xs md:text-sm font-medium px-4 py-2 rounded-xl transition-all active:scale-95 border flex items-center gap-2 shadow-sm
                         ${selectedCategory === cat.id 
-                        ? 'bg-jungle-600 text-white border-jungle-500 shadow-lg shadow-jungle-900/50' 
-                        : 'bg-white/5 border-white/5 text-stone-400 hover:border-white/10 hover:bg-white/10 hover:text-stone-200'}`}
+                        ? 'bg-jungle-500 text-white border-jungle-400 shadow-lg shadow-jungle-900/30' 
+                        : 'bg-jungle-950/40 border-white/5 text-stone-400 hover:border-white/10 hover:bg-jungle-950/60 hover:text-stone-200'}`}
                     >
-                    <span className="text-sm filter drop-shadow-md text-jungle-400">{getCategoryIcon(cat.id)}</span> {cat.name}
+                    <span className={`text-sm filter drop-shadow-md ${selectedCategory === cat.id ? 'text-white' : 'text-jungle-400'}`}>{getCategoryIcon(cat.id)}</span> {cat.name}
                     </button>
                 ))}
             </div>
@@ -287,7 +287,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                 <div key={group.id} id={`category-${group.id}`} className="scroll-mt-48 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                     <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-2">
                         <span className="text-jungle-500 filter drop-shadow-lg">{getCategoryIcon(group.id, 28)}</span>
-                        <h2 className="font-display font-bold text-xl md:text-3xl text-stone-100 tracking-tight drop-shadow-md uppercase">
+                        <h2 className="font-display font-bold text-xl md:text-3xl text-stone-200 tracking-tight drop-shadow-md uppercase">
                             {group.name}
                         </h2>
                     </div>
@@ -298,11 +298,11 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                             <div 
                                 key={product.id} 
                                 onClick={() => setSelectedProduct(product)}
-                                className="glass-card rounded-2xl overflow-hidden cursor-pointer group hover:bg-white/5 transition-all duration-300 flex flex-row md:flex-col h-full relative border border-white/5 hover:border-jungle-500/30"
+                                className="glass-card rounded-2xl overflow-hidden cursor-pointer group hover:bg-white/5 transition-all duration-300 flex flex-row md:flex-col h-full relative border border-white/5 hover:border-jungle-400/30"
                             >
                                 {/* Image Section */}
                                 <div className="w-28 sm:w-36 md:w-full h-28 sm:h-36 md:h-56 bg-jungle-950 relative overflow-hidden shrink-0">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-1000/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-jungle-1000/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-500"></div>
                                     <img 
                                         src={product.imageUrl} 
                                         alt={product.name} 
@@ -310,7 +310,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out opacity-90 group-hover:opacity-100" 
                                     />
                                     {product.isPopular && (
-                                        <div className="absolute top-0 left-0 bg-jungle-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-br-lg shadow-lg uppercase tracking-wider flex items-center gap-1 z-20 backdrop-blur-sm">
+                                        <div className="absolute top-0 left-0 bg-jungle-500 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-br-lg shadow-lg uppercase tracking-wider flex items-center gap-1 z-20 backdrop-blur-sm border-r border-b border-white/10">
                                             <Leaf size={10} fill="currentColor" /> Top
                                         </div>
                                     )}
@@ -319,10 +319,10 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                                 {/* Content Section */}
                                 <div className="p-3 md:p-5 flex flex-col justify-between flex-1 relative">
                                     <div>
-                                        <h3 className="font-bold text-stone-100 text-sm md:text-lg leading-tight mb-1.5 line-clamp-2 group-hover:text-jungle-300 transition-colors font-sans tracking-wide">
+                                        <h3 className="font-bold text-stone-200 text-sm md:text-lg leading-tight mb-1.5 line-clamp-2 group-hover:text-jungle-400 transition-colors font-sans tracking-wide">
                                             {product.name}
                                         </h3>
-                                        <p className="text-xs text-stone-400 leading-relaxed font-light line-clamp-2 md:line-clamp-3 mb-3">
+                                        <p className="text-xs text-stone-500 leading-relaxed font-light line-clamp-2 md:line-clamp-3 mb-3">
                                             {product.description}
                                         </p>
                                     </div>
@@ -330,20 +330,20 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                                     <div className="mt-auto flex items-center justify-between">
                                         <div className="flex flex-col">
                                             {(product.originalPrice || product.categoryId === 'promo') && (
-                                                <span className="text-[10px] text-stone-500 line-through font-medium">De R$ {(product.originalPrice || product.price * 1.2).toFixed(2).replace('.', ',')}</span>
+                                                <span className="text-[10px] text-stone-600 line-through font-medium">De R$ {(product.originalPrice || product.price * 1.2).toFixed(2).replace('.', ',')}</span>
                                             )}
-                                            <span className="text-base md:text-xl font-bold text-white tracking-tight flex items-baseline gap-0.5">
+                                            <span className="text-base md:text-xl font-bold text-stone-100 tracking-tight flex items-baseline gap-0.5">
                                                 <span className="text-[10px] font-normal text-stone-500">R$</span> {product.price.toFixed(2).replace('.', ',')}
                                             </span>
                                         </div>
                                         
                                         {/* Desktop Arrow */}
-                                        <span className="hidden md:flex w-8 h-8 rounded-full bg-white/5 group-hover:bg-jungle-600 text-stone-400 group-hover:text-white items-center justify-center transition-all duration-300 transform group-hover:rotate-0 border border-white/5">
+                                        <span className="hidden md:flex w-8 h-8 rounded-full bg-white/5 group-hover:bg-jungle-500 text-stone-500 group-hover:text-white items-center justify-center transition-all duration-300 transform group-hover:rotate-0 border border-white/5">
                                             <ChevronRight size={16} />
                                         </span>
 
                                         {/* Mobile Add Visual */}
-                                        <div className="md:hidden bg-white/5 p-1.5 rounded-full text-stone-300 border border-white/5">
+                                        <div className="md:hidden bg-white/5 p-1.5 rounded-full text-stone-400 border border-white/5">
                                             <ChevronRight size={14} />
                                         </div>
                                     </div>
@@ -354,9 +354,9 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
                 </div>
             ))
         ) : (
-            <div className="text-center py-32 text-stone-500">
-                <Leaf className="mx-auto mb-4 text-jungle-800" size={64} />
-                <h3 className="text-xl font-bold text-stone-400 mb-2 font-display">A selva está calma...</h3>
+            <div className="text-center py-32 text-stone-600">
+                <Leaf className="mx-auto mb-4 text-jungle-700" size={64} />
+                <h3 className="text-xl font-bold text-stone-500 mb-2 font-display">A selva está calma...</h3>
                 <p className="text-base text-stone-600">Nenhum produto encontrado neste cardápio no momento.</p>
             </div>
         )}
@@ -366,7 +366,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
       <footer className="mt-auto bg-jungle-950 border-t border-white/5 pt-6 pb-24 md:pb-6 relative overflow-hidden">
           {/* Lion Background in Footer */}
           <div 
-             className="absolute bottom-0 right-0 w-48 h-56 pointer-events-none opacity-10 md:opacity-15 mix-blend-luminosity z-0"
+             className="absolute bottom-0 right-0 w-48 h-56 pointer-events-none opacity-5 mix-blend-luminosity z-0"
              style={{
                  backgroundImage: 'url("https://static.wixstatic.com/media/1f17f3_3bcce8178a614f678a1741ecd4da9fd9~mv2.webp")',
                  backgroundSize: 'contain',
@@ -379,23 +379,23 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
           
           <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
               <div className="mb-3 flex justify-center">
-                  <div className="w-12 h-12 bg-jungle-1000 rounded-full flex items-center justify-center border border-white/10 shadow-xl">
-                    <img src="https://static.wixstatic.com/media/1f17f3_3930e4dea898411e95810ab096731d82~mv2.png" className="w-8 h-8 object-contain opacity-80" alt="Selva Logo" />
+                  <div className="w-12 h-12 bg-jungle-1000 rounded-full flex items-center justify-center border border-white/5 shadow-xl">
+                    <img src="https://static.wixstatic.com/media/1f17f3_3930e4dea898411e95810ab096731d82~mv2.png" className="w-8 h-8 object-contain opacity-60" alt="Selva Logo" />
                   </div>
               </div>
 
-              <h3 className="font-display font-bold text-lg text-stone-200 mb-4 uppercase tracking-widest">Selva Pizza e Cozinha</h3>
+              <h3 className="font-display font-bold text-lg text-stone-300 mb-4 uppercase tracking-widest">Selva Pizza e Cozinha</h3>
 
-              <div className="space-y-3 text-stone-400 font-light text-xs mb-4 leading-relaxed">
-                  <a href="https://share.google/NNAeLqxPLEOOOZKj6" target="_blank" className="flex flex-col items-center gap-1 hover:text-white transition-colors cursor-pointer group">
-                      <MapPin size={14} className="text-jungle-400 mb-1 group-hover:scale-110 transition-transform" />
+              <div className="space-y-3 text-stone-500 font-light text-xs mb-4 leading-relaxed">
+                  <a href="https://share.google/NNAeLqxPLEOOOZKj6" target="_blank" className="flex flex-col items-center gap-1 hover:text-stone-300 transition-colors cursor-pointer group">
+                      <MapPin size={14} className="text-jungle-500 mb-1 group-hover:scale-110 transition-transform" />
                       <p>R. Quinze de Novembro, 600<br/>Centro de Vila Velha, Vila Velha - ES, 29101-045</p>
                   </a>
                   
                   <div className="flex flex-col items-center gap-1 pt-1">
                       <div className="flex items-center gap-3">
-                          <a href="https://www.instagram.com/selvapizzaria/" className="hover:text-white transition-colors"><Instagram size={18} /></a>
-                          <a href="https://wa.me/5527988286687" className="hover:text-white transition-colors"><WhatsAppIcon size={18} /></a>
+                          <a href="https://www.instagram.com/selvapizzaria/" className="hover:text-stone-300 transition-colors"><Instagram size={18} /></a>
+                          <a href="https://wa.me/5527988286687" className="hover:text-stone-300 transition-colors"><WhatsAppIcon size={18} /></a>
                       </div>
                   </div>
               </div>
@@ -403,7 +403,7 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
               <div className="mt-4 pt-4 border-t border-white/5 text-[10px] text-stone-600 uppercase tracking-wider flex flex-col md:flex-row items-center justify-between gap-4">
                   <p>&copy; {new Date().getFullYear()} Selva Pizza e Cozinha.</p>
                   
-                  <a href="https://www.upandco.com.br" target="_blank" className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+                  <a href="https://www.upandco.com.br" target="_blank" className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
                       <span>Desenvolvido por UP! Company</span>
                       <img src="https://static.wixstatic.com/media/1f17f3_1e2b54d2fd894dd997c6cbc18e940576~mv2.png" alt="UP! Company" className="h-5 w-auto" />
                   </a>
@@ -422,13 +422,13 @@ export const MenuPage: React.FC<MenuPageProps> = ({ categories, products, loyalt
       {/* Hours Modal */}
       {showHoursModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <div className="absolute inset-0 bg-black/90 backdrop-blur-sm transition-opacity" onClick={() => setShowHoursModal(false)} />
+            <div className="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onClick={() => setShowHoursModal(false)} />
             <div className="bg-jungle-950 w-full max-w-md rounded-[2rem] shadow-2xl relative z-10 overflow-hidden animate-in zoom-in-95 duration-300 flex flex-col max-h-[90vh] border border-white/10">
                 <div className="bg-jungle-1000/50 p-6 text-stone-100 flex justify-between items-center shrink-0 border-b border-white/5">
                     <h3 className="font-bold text-xl flex items-center gap-2 font-display uppercase tracking-wide">
                         <Clock size={24} className="text-gold-400" /> Horários
                     </h3>
-                    <button onClick={() => setShowHoursModal(false)} className="hover:bg-white/10 p-2 rounded-full transition-colors text-stone-400 hover:text-white">
+                    <button onClick={() => setShowHoursModal(false)} className="hover:bg-white/5 p-2 rounded-full transition-colors text-stone-400 hover:text-white">
                         <X size={24} />
                     </button>
                 </div>
